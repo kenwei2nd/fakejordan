@@ -1,0 +1,61 @@
+export type VariationId = 'red' | 'blue' | 'yellow' | 'green' | 'brown';
+
+export const variations = [
+  {
+    id: 'red',
+    index: 0,
+    name: 'Crimson Strike',
+    moodWord: 'STRIKE',
+    image: '/sneakers/bfadac52acbca9bc2272e29ea00af1b5_1778827817_55jljljc.png',
+    bgDeep: '#1a0608',
+    bgMid: '#3a0a10',
+    glow: '#ff2d3a',
+    tagline: 'Built for the blacktop.',
+  },
+  {
+    id: 'blue',
+    index: 1,
+    name: 'Midnight Court',
+    moodWord: 'FROZEN',
+    image: '/sneakers/b82009747ccb8d69753921e1186f077a_1778827847_m3dtifb5.png',
+    bgDeep: '#04101e',
+    bgMid: '#0c2542',
+    glow: '#3b82f6',
+    tagline: 'Cold-pressed performance.',
+  },
+  {
+    id: 'yellow',
+    index: 2,
+    name: 'Hi-Vis Hazard',
+    moodWord: 'VOLTAGE',
+    image: '/sneakers/b3e5a52101b81c845cc0862323ab8edf_1778827953_2c21xtoe.png',
+    bgDeep: '#1a1505',
+    bgMid: '#3a2e08',
+    glow: '#facc15',
+    tagline: 'Caution: full send only.',
+  },
+  {
+    id: 'green',
+    index: 3,
+    name: 'Tactical Moss',
+    moodWord: 'TERRAIN',
+    image: '/sneakers/fb58a3f0188ad67a5af7f71dde5f8405_1778828010_jeha1z3t.png',
+    bgDeep: '#06140a',
+    bgMid: '#0f2e18',
+    glow: '#22c55e',
+    tagline: 'Off-grid traction.',
+  },
+  {
+    id: 'brown',
+    index: 4,
+    name: 'Field Leather',
+    moodWord: 'LEGACY',
+    image: '/sneakers/038d350cfb55cc7a5cb9ee582f1d9750_1778827880_2d7do53q.png',
+    bgDeep: '#150d07',
+    bgMid: '#3a2410',
+    glow: '#b45309',
+    tagline: 'Heritage, weathered in.',
+  },
+] as const;
+
+export type Variation = (typeof variations)[number];
