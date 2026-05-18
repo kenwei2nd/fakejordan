@@ -10,19 +10,19 @@ const meta = sections.find((s) => s.id === 'gallery')!;
 
 const PANELS = [
   {
-    src: '/lifestyle/gallery-red.png',
+    src: '/lifestyle/gallery-red.webp',
     caption: 'CRIMSON STRIKE',
     sub: 'Court Ready — Street Verified',
     align: 'bottom-left',
   },
   {
-    src: '/lifestyle/gallery-all.png',
+    src: '/lifestyle/gallery-all.webp',
     caption: 'ALL 5 COLORWAYS',
     sub: 'One silhouette. Five worlds.',
     align: 'top-right',
   },
   {
-    src: '/lifestyle/gallery-blue.png',
+    src: '/lifestyle/gallery-blue.webp',
     caption: 'MIDNIGHT COURT',
     sub: 'Cold-pressed. Drop-ready.',
     align: 'bottom-right',

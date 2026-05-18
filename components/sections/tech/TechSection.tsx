@@ -1,127 +1,112 @@
 'use client';
 
 import { useRef } from 'react';
-import Image from 'next/image';
-import SectionWrapper from '../SectionWrapper';
-import TechCallout from './TechCallout';
 import { sections } from '@/lib/sections';
-import { useSectionReveal } from '@/hooks/useSectionReveal';
-import gsap from 'gsap';
+import TechCanvas from './TechCanvas';
+import TechLabels from './TechLabels';
+import TechCarryForward from './TechCarryForward';
 
 const meta = sections.find((s) => s.id === 'tech')!;
 
-const CALLOUTS = [
-  {
-    num: '01',
-    name: 'AeroPlate™',
-    spec: 'Full-length · 18g',
-    detail: 'Uni-directional carbon fibre propulsion plate tuned for the toe-off phase. Stiffness index 94 — aggressive forward roll, zero lateral flex.',
-  },
-  {
-    num: '02',
-    name: 'VaporCell™',
-    spec: 'N₂-infused · 38mm heel',
-    detail: 'Nitrogen-injected open-cell EVA returns 38% of impact energy. 22% lighter than conventional foam at equivalent cushion depth.',
-  },
-  {
-    num: '03',
-    name: 'GripLock™',
-    spec: 'Multi-dir. rubber · 4mm lug',
-    detail: 'Bi-density outsole rubber: softer forefoot for court grip, firmer heel for durability. Hexagonal lug geometry cuts on all vectors.',
-  },
-  {
-    num: '04',
-    name: 'AdaptFit™',
-    spec: '3D-knit · zonal support',
-    detail: 'Machine-knit upper with three distinct density zones — breathable mesh at toe box, structural weave at midfoot, lockdown padding at ankle collar.',
-  },
-];
-
 export default function TechSection() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useSectionReveal(ref as React.RefObject<HTMLElement>, (tl) => {
-    tl.fromTo(
-      '.tech-shoe-wrap',
-      { x: -60, opacity: 0 },
-      { x: 0, opacity: 1, duration: 0.7, ease: 'power2.out' }
-    ).fromTo(
-      '.tech-callout',
-      { x: 40, opacity: 0 },
-      { x: 0, opacity: 1, duration: 0.5, ease: 'power2.out', stagger: 0.12 },
-      '-=0.4'
-    );
-  });
+  const triggerRef = useRef<HTMLElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   return (
-    <SectionWrapper
+    <section
+      ref={triggerRef}
       id={meta.id}
-      bg={meta.bg}
-      glow={meta.glow}
-      label={meta.label}
-      title={meta.title}
+      style={{
+        position: 'relative',
+        // 200vh morph spacer (card rises into view, bridge shoe scales down)
+        // + 100vh sticky card stage + 200vh of sticky release.
+        height: '500vh',
+        background: '#050505',
+        zIndex: 20,
+        ['--section-glow' as string]: meta.glow,
+      }}
     >
+      {/* Empty pre-card spacer — its only job is to add 200vh of scroll
+          before the Showcase Card's sticky pin engages, giving the bridge
+          shoe a long, deliberate morph. */}
+      <div style={{ height: '200vh' }} aria-hidden />
+
       <div
-        ref={ref}
-        className="flex h-full items-center"
-        style={{ padding: '0 5vw' }}
+        style={{
+          position: 'sticky',
+          top: 0,
+          height: '100vh',
+          width: '100%',
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
       >
-        {/* Left: shoe */}
+        {/* Ghost section title */}
         <div
-          className="tech-shoe-wrap shrink-0 flex items-center justify-center"
-          style={{ width: '46%', opacity: 0 }}
+          className="font-display"
+          style={{
+            position: 'absolute',
+            top: '8%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            fontSize: 'clamp(5rem, 14vw, 12rem)',
+            color: 'rgba(255, 255, 255, 0.025)',
+            letterSpacing: '-0.04em',
+            whiteSpace: 'nowrap',
+            pointerEvents: 'none',
+            zIndex: 0,
+          }}
         >
-          <div style={{ position: 'relative' }}>
-            {/* Glow behind shoe */}
-            <div
-              style={{
-                position: 'absolute',
-                inset: '-20%',
-                borderRadius: '50%',
-                background: `radial-gradient(ellipse 60% 50% at 50% 55%, ${meta.glow}30, transparent 70%)`,
-                filter: 'blur(40px)',
-              }}
-            />
-            <Image
-              src="/sneakers/bfadac52acbca9bc2272e29ea00af1b5_1778827817_55jljljc.png"
-              alt="AR4 — AeroPlate Carbon"
-              width={900}
-              height={900}
-              priority
-              quality={95}
-              sizes="45vw"
-              style={{ width: 'clamp(300px, 40vw, 600px)', height: 'auto', display: 'block', position: 'relative' }}
-            />
-          </div>
+          {meta.title}
         </div>
 
-        {/* Right: callouts */}
+        {/* Showcase Card — frosted blueprint viewport */}
         <div
-          className="flex flex-col justify-center"
-          style={{ flex: 1, paddingLeft: '4vw', gap: '2.2rem' }}
+          ref={cardRef}
+          className="tech-card"
+          style={{
+            position: 'relative',
+            width: 'min(88vw, 1400px)',
+            height: 'min(82vh, 820px)',
+          }}
         >
-          {/* Section heading */}
-          <div>
-            <div className="font-mono-spec text-white/30 mb-2">Technology / AR4</div>
-            <h2
-              className="font-display"
-              style={{ fontSize: 'clamp(2rem, 4vw, 4.5rem)', color: meta.glow, lineHeight: 0.9 }}
-            >
-              Built Different.
-            </h2>
-          </div>
+          {/* Blueprint grid */}
+          <div className="tech-grid-overlay" />
 
-          {/* Divider */}
-          <div className="h-px" style={{ background: `${meta.glow}30`, width: '100%' }} />
+          {/* Corner coordinate labels */}
+          <span className="tech-coord" style={{ top: 14, left: 18 }}>
+            01 / 04 · ENGINEERED VIEW
+          </span>
+          <span className="tech-coord" style={{ top: 14, right: 18 }}>
+            X·1600 Y·900
+          </span>
+          <span className="tech-coord" style={{ bottom: 14, left: 18 }}>
+            SCALE 1:1
+          </span>
+          <span className="tech-coord" style={{ bottom: 14, right: 18 }}>
+            REV 02.6
+          </span>
+          <span
+            className="tech-coord"
+            style={{
+              top: 14,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              color: 'rgba(255, 45, 58, 0.65)',
+              letterSpacing: '0.32em',
+            }}
+          >
+            ▼ AR4 · EXPLODED SCHEMATIC
+          </span>
 
-          {/* Callout list */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.6rem' }}>
-            {CALLOUTS.map((c) => (
-              <TechCallout key={c.num} {...c} glow={meta.glow} />
-            ))}
-          </div>
+          <TechCanvas />
+          <TechLabels cardRef={cardRef} triggerRef={triggerRef} />
         </div>
+
+        <TechCarryForward triggerRef={triggerRef} />
       </div>
-    </SectionWrapper>
+    </section>
   );
 }

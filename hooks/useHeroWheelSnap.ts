@@ -11,17 +11,18 @@ if (typeof window !== 'undefined') {
 
 /**
  * One wheel-tick = one full page snap. Covers:
- *   0     → intro video
- *   1–5   → hero colorway variations
- *   6–12  → feature sections (7 × 100vh)
- * Total: 13 discrete snap points, each at index × window.innerHeight.
+ *   0      → intro video
+ *   1–5    → hero colorway variations
+ *   6–10   → tech section (500vh — 200vh morph spacer, then 300vh sticky stage)
+ *   11–16  → remaining feature sections (6 × 100vh)
+ * Total: 17 discrete snap points, each at index × window.innerHeight.
  */
 export function useHeroWheelSnap() {
   const animating = useRef(false);
 
   useEffect(() => {
-    // 1 intro + 5 hero variations + 7 feature sections = 13 snap points (indices 0..12)
-    const MAX_IDX = variations.length + 7;   // 12
+    // 1 intro + 5 hero variations + 5 tech + 6 other sections = 17 snap points (indices 0..16)
+    const MAX_IDX = variations.length + 11;  // 16
 
     const step = (dir: 1 | -1) => {
       const vh = window.innerHeight;

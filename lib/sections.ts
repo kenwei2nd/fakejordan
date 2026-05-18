@@ -1,6 +1,6 @@
 export interface SectionMeta {
   id: string;
-  snapIndex: number;   // global wheel-snap index (hero = 0..4, sections = 5..11)
+  snapIndex: number;   // global wheel-snap index (intro = 0, hero variations = 1..5, tech = 6..10, rest = 11..16)
   label: string;       // mono label top-left
   bg: string;          // section background colour (opaque, covers hero-bg)
   glow: string;        // accent / --section-glow
@@ -10,15 +10,15 @@ export interface SectionMeta {
 export const sections: SectionMeta[] = [
   {
     id: 'tech',
-    snapIndex: 5,
+    snapIndex: 6, // spans 6..10 (500vh — 200vh morph spacer + 300vh sticky stage)
     label: '01 / 07',
-    bg: '#07111a',
-    glow: '#06b6d4',
+    bg: '#0b0f14',
+    glow: '#ff2d3a',
     title: 'ENGINEERED',
   },
   {
     id: 'materials',
-    snapIndex: 6,
+    snapIndex: 11,
     label: '02 / 07',
     bg: '#120c06',
     glow: '#d97706',
@@ -26,7 +26,7 @@ export const sections: SectionMeta[] = [
   },
   {
     id: 'performance',
-    snapIndex: 7,
+    snapIndex: 12,
     label: '03 / 07',
     bg: '#050505',
     glow: '#84cc16',
@@ -34,7 +34,7 @@ export const sections: SectionMeta[] = [
   },
   {
     id: 'gallery',
-    snapIndex: 8,
+    snapIndex: 13,
     label: '04 / 07',
     bg: '#0a0a0a',
     glow: '#f4f4f5',
@@ -42,7 +42,7 @@ export const sections: SectionMeta[] = [
   },
   {
     id: 'designer',
-    snapIndex: 9,
+    snapIndex: 14,
     label: '05 / 07',
     bg: '#18130e',
     glow: '#e7e5e4',
@@ -50,7 +50,7 @@ export const sections: SectionMeta[] = [
   },
   {
     id: 'sustainability',
-    snapIndex: 10,
+    snapIndex: 15,
     label: '06 / 07',
     bg: '#071410',
     glow: '#34d399',
@@ -58,7 +58,7 @@ export const sections: SectionMeta[] = [
   },
   {
     id: 'cta',
-    snapIndex: 11,
+    snapIndex: 16,
     label: '07 / 07',
     bg: '#000000',
     glow: '#fbbf24',

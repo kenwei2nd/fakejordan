@@ -6,6 +6,7 @@ import { variations } from '@/lib/variations';
 export default function SneakerStage() {
   return (
     <div
+      data-sneaker-stage
       className="absolute inset-0 z-20 pointer-events-none"
       style={{ perspective: '1600px' }}
     >
@@ -47,8 +48,9 @@ export default function SneakerStage() {
                 alt={variation.name}
                 width={1400}
                 height={1400}
-                priority
-                quality={95}
+                priority={idx === 0}
+                loading={idx === 0 ? 'eager' : 'lazy'}
+                quality={85}
                 sizes="(max-width: 768px) 90vw, 65vw"
                 style={{
                   width: 'clamp(420px, 62vw, 950px)',
