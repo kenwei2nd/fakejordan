@@ -2,15 +2,15 @@ export type VariationId = 'red' | 'blue' | 'yellow' | 'green' | 'brown';
 
 export const variations = [
   {
-    id: 'red',
+    id: 'brown',
     index: 0,
-    name: 'Crimson Strike',
-    moodWord: 'STRIKE',
-    image: '/sneakers/bfadac52acbca9bc2272e29ea00af1b5_1778827817_55jljljc.webp',
-    bgDeep: '#1a0608',
-    bgMid: '#3a0a10',
-    glow: '#ff2d3a',
-    tagline: 'Built for the blacktop.',
+    name: 'Field Leather',
+    moodWord: 'LEGACY',
+    image: '/sneakers/038d350cfb55cc7a5cb9ee582f1d9750_1778827880_2d7do53q.webp',
+    bgDeep: '#150d07',
+    bgMid: '#3a2410',
+    glow: '#b45309',
+    tagline: 'Heritage, weathered in.',
   },
   {
     id: 'blue',
@@ -46,15 +46,15 @@ export const variations = [
     tagline: 'Off-grid traction.',
   },
   {
-    id: 'brown',
+    id: 'red',
     index: 4,
-    name: 'Field Leather',
-    moodWord: 'LEGACY',
-    image: '/sneakers/038d350cfb55cc7a5cb9ee582f1d9750_1778827880_2d7do53q.webp',
-    bgDeep: '#150d07',
-    bgMid: '#3a2410',
-    glow: '#b45309',
-    tagline: 'Heritage, weathered in.',
+    name: 'Crimson Strike',
+    moodWord: 'STRIKE',
+    image: '/sneakers/bfadac52acbca9bc2272e29ea00af1b5_1778827817_55jljljc.webp',
+    bgDeep: '#1a0608',
+    bgMid: '#3a0a10',
+    glow: '#ff2d3a',
+    tagline: 'Built for the blacktop.',
   },
 ] as const;
 

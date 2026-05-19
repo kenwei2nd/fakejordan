@@ -12,7 +12,7 @@ export default function HeroNav() {
           className="font-display text-white"
           style={{ fontSize: '1.1rem', letterSpacing: '0.05em' }}
         >
-          AETHER
+          FakeJordan
         </span>
       </div>
 

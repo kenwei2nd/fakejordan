@@ -85,12 +85,13 @@ export default function GallerySection() {
           >
             Drop 026 · Spring-Summer 2025
             <br />
-            Photography by AETHER Creative
+            Photography by FakeJordan Creative
           </div>
         </div>
 
         {/* 3-panel grid */}
         <div
+          className="gallery-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1.1fr 1fr',

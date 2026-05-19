@@ -18,19 +18,12 @@ export default function TechSection() {
       id={meta.id}
       style={{
         position: 'relative',
-        // 200vh morph spacer (card rises into view, bridge shoe scales down)
-        // + 100vh sticky card stage + 200vh of sticky release.
-        height: '500vh',
+        height: '100vh',
         background: '#050505',
         zIndex: 20,
         ['--section-glow' as string]: meta.glow,
       }}
     >
-      {/* Empty pre-card spacer — its only job is to add 200vh of scroll
-          before the Showcase Card's sticky pin engages, giving the bridge
-          shoe a long, deliberate morph. */}
-      <div style={{ height: '200vh' }} aria-hidden />
-
       <div
         style={{
           position: 'sticky',
